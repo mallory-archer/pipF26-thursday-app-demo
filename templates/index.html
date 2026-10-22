@@ -6,6 +6,12 @@
 </head>
 <body>
   <h1>Students</h1>
+  <h2>Average skill ratings</h2>
+  <ul>
+    {% for skill in skill_averages %}
+    <li>{{ skill.label }}: {{ "%.2f"|format(skill.average) }}</li>
+    {% endfor %}
+  </ul>
   <button type="button" id="shuffle">Shuffle</button>
   <ul id="students">
     {% for name in names %}
