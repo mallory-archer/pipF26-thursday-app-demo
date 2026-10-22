@@ -6,10 +6,26 @@
 </head>
 <body>
   <h1>Students</h1>
-  <ul>
+  <button type="button" id="shuffle">Shuffle</button>
+  <ul id="students">
     {% for name in names %}
     <li>{{ name }}</li>
     {% endfor %}
   </ul>
+  <script>
+    const button = document.getElementById("shuffle");
+    const list = document.getElementById("students");
+
+    button.addEventListener("click", () => {
+      const items = [...list.children];
+      for (let i = items.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [items[i], items[j]] = [items[j], items[i]];
+      }
+      for (const item of items) {
+        list.appendChild(item);
+      }
+    });
+  </script>
 </body>
 </html>
